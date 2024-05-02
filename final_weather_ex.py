@@ -14,12 +14,12 @@ df['date'] = pd.to_datetime(df['date'], errors='coerce')
 # Drop rows where the date is NaT
 df = df.dropna(subset=['date'])
 
-# Check if the H3 index column exists and is correct
-h3_index_column = 'h3_res_7'  # Adjust if your column name is different
+
+h3_index_column = 'h3_res_7' 
 if h3_index_column not in df.columns:
     raise ValueError(f"Missing required H3 index column: {h3_index_column}")
 
-# Remove duplicates based on H3 index
+
 df = df.drop_duplicates(subset=[h3_index_column])
 
 def fetch_weather_data(date, h3_index, scale):
